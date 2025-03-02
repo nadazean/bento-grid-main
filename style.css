@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=League+Spartan&family=Overpass:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+ /* Colors */
+
+--Purple-100: hsl(254, 88%, 90%);
+--Purple-500: hsl(256, 67%, 59%);
+
+--Yellow-100: hsl(31, 66%, 93%);
+--Yellow-500: hsl(39, 100%, 71%);
+
+--White: hsl(0, 0%, 100%);
+--Black: hsl(0, 0%, 7%);
+
+
+    --fs-body:1.125rem;
+    --fs-heading:1.75rem;
+    
+
+}
+* , *::after , *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "DM Sans", sans-serif;
+    background-color: #f9f9f9;
+    font-size: 18px;
+    padding: 2rem 1rem;
+}
+img{
+    max-width: 100%;
+    display: block;
+}
+h2{
+    font-size: var(--fs-heading);
+    font-weight: 500;
+    line-height: .9;
+}
+h1{
+    font-size: 2.75rem;
+    font-weight: 500;
+}
+.grid{
+    display: grid;
+    gap:1rem ;
+}
+
+
+/* layout style*/
+.bento-grid-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: repeat(3,13rem) ;
+    grid-template-areas: 
+      'column1 column2 column3'
+      'column1 column2 column3'
+      'column1 column4 column4'
+    ;
+    max-width: 60rem;
+    margin-inline:auto;
+    gap: 1rem;
+}
+.bento-grid-container > * , .inside-element{
+    display: grid;
+    gap: 1rem;
+}
+
+.bento-grid-item-element{
+   border-radius: .5rem;
+   padding: 1rem;
+}
+
+.inside-element{
+    grid-template-columns: 1fr 1fr;
+}
+
+.inside-element:nth-child(1){
+    grid-template-columns: .95fr 2fr ;
+}
+
+.column-one{
+    grid-area: column1;
+}
+.column-two{
+    grid-area: column2;
+}
+.column-three{
+    grid-area: column3;
+}
+.column-four{
+    grid-area: column4;
+}
+
+/* ui componint*/
+.create{
+    place-content: center;
+    padding: 2rem ;
+    background-color: var(--Yellow-100);
+}
+.create span{
+    font-style: italic;
+    color: var(--Purple-500);
+ }  
+.content{
+    place-content: center;
+    padding-inline: 1.5rem;
+    background-color: var(--Yellow-500);
+}
+.content h2{
+    margin-bottom: 1rem;
+}
+.social{
+    place-content: center;
+    color: var(--White);
+    text-align: center;
+    background-color: var(--Purple-500);
+}
+.social span{
+   color: var(--Yellow-500);
+}
+.social p{
+    color: var(--Purple-100);
+    font-size: 15px;
+}
+.social img{
+    max-width: 10rem;
+    margin-inline: auto;
+}
+.manage{
+    position: relative;
+    overflow-x: hidden;
+    background-color: var(--White);
+}
+.manage img{
+    max-width: 100%;
+    position: relative;
+    right: -2rem;
+    margin-bottom: 1rem;
+}
+.posting{
+    position: relative;
+    overflow: hidden;
+    background-color: var(--Yellow-500);
+}
+.posting img{
+  position: absolute;
+  max-width: 11rem;
+  bottom: -4rem;
+  left: 1.4rem;
+}
+.schedule{
+    place-content: center;
+    padding-left:1.5rem;
+    overflow: hidden;
+    background-color: var(--Purple-100);
+}
+.schedule img{
+    position: relative;
+    right:-2rem;
+    max-width: 100%;
+
+}
+.schedule p{
+    font-size: 13px;
+    margin-top: .8rem;
+}
+.audience{
+    place-content: center;
+    background-color: var(--White);
+}
+.followers{
+    grid-template-columns: 1fr 1fr;
+    place-items:center ;
+    background-color: var(--Purple-500);
+}
+.followers h2{
+    color: var(--White);
+}
+
+
+@media (max-width:950px){
+    .bento-grid-container{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4,13rem) ;
+        grid-template-areas: 
+          ' column2 column3'
+          ' column2 column3'
+          ' column4 column4'
+          ' column1 column1'
+        ;
+        gap: 7rem 2rem;
+    }
+    .column-one{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width:650px){
+    .bento-grid-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto ;
+        grid-template-areas: 
+          ' column2'
+          ' column3'
+          ' column4'
+          ' column1'
+        ;
+        gap: 1.5rem;
+    }
+    .column-one{
+        grid-template-columns: 1fr 1fr;
+    }
+    .inside-element , .inside-element:nth-child(1) , .column-one{
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+   
+    .manage img{
+        max-width:80%;
+        position: relative;
+  
+        margin-bottom: 1rem;
+    }
+  
+    .posting img{
+      position: relative;
+      bottom: -2rem;
+      left:0;
+    }
+    .followers{
+        padding: 1rem;
+        grid-template-columns: 1fr;
+    }
+    .followers h2{
+        width: 70%;
+        text-align: center;
+        margin-top: 2rem;
+    }
+}
